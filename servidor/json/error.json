@@ -1,0 +1,24 @@
+{
+	"unlogintoken":{
+		"error":"No estas enviando token de autorizacion en el header Authorization"
+	},
+	"unlogin":{
+		"error": "No estas logeado"
+	},
+	"badlogin":{
+		"error": "Login incorrecto. Puede que el usuario o la contraseña esten erroneos."
+	},
+	"auth":{
+		"error": "No tienes permisos"
+	},
+	"repeated-user": {
+		"error":"El usuario que has elegido ya esta en uso"
+	},
+	"internal":{
+		"error":"Error interno del servidor, consulte con el administrador del sistema"
+	},
+	"invalid-inputs":{
+		"error":"Algun dato requierido no paso las validaciones"
+	}
+
+}

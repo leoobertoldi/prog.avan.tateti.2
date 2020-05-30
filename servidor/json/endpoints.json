@@ -1,0 +1,66 @@
+{
+"args":{
+	"userName":{
+		"type":"string",
+		"minLength":5, 
+		"maxLength":10,
+		"RegExp":["^[A-Za-z]+$","g"]
+	},
+	"userMateName":{
+		"type":"string",
+		"minLength":7, 
+		"default":""
+	},
+	"gameId":{
+		"type":"int",
+		"min":0
+	},
+	"pos":{
+		"type":"int",
+		"min":0,
+		"max":3
+	}
+},
+"ends":{
+	"login": {
+		"path":"/login",
+		"method":"post",
+		"bodyArgs":{"name":"userName"},
+		"getArgs":{},
+		"urlArgs":{},
+		"user":false
+	},
+	"getUser": {
+		"path":"/user",
+		"method":"get",
+		"bodyArgs":{},
+		"getArgs":{},
+		"urlArgs":{},
+		"user":true
+	},
+	"play": {
+		"path":"/play",
+		"method":"post",
+		"bodyArgs":{"name":"userMateName"},
+		"getArgs":{},
+		"urlArgs":{},
+		"user":true
+	},
+	"present": {
+		"path":"/present",
+		"method":"put",
+		"bodyArgs":{"game":"gameId"},
+		"getArgs":{},
+		"urlArgs":{},
+		"user":true
+	},
+	"move": {
+		"path":"/move",
+		"method":"put",
+		"bodyArgs":{"x":"pos","y":"pos","game":"gameId"},
+		"getArgs":{},
+		"urlArgs":{},
+		"user":true
+	}
+}
+}
