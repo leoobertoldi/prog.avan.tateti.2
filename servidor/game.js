@@ -1,20 +1,18 @@
 var Tateti=require("./tateti.js");
 var games={};
 count=0;
-function Partida(id){
+function Game(id){
 	return {
 		id:0,
 		creator:"",
-		guestCreator:new Date(),
+		creatorUpdate:new Date(),
 		guestUpdate:null,
 		guest:"",
 		allPlayers:false,
 		game:null
 	}
 }
-
 var inter={};
-
 function setInvitado(game,player){
 	game.allPlayers=true;
 	game.guestUpdate=new Date();
@@ -32,9 +30,9 @@ function getMinutes(date){
 function deleteGames(){
 	for (var i in games){
 		var game=games[i];
-		if (game.guestCreator && 1<getMinutes(game.guestCreator)){
+		if (game.creatorUpdate && 1<getMinutes(game.creatorUpdate)){
 				game.creator="";
-				game.guestCreator=null;
+				game.creatorUpdate=null;
 				if (game.guestUpdate==null){
 					delete games[i];
 				
@@ -54,7 +52,7 @@ function deleteGames(){
 		}
 		else if (game.creator==""){
 				game.creator=game.guest;
-				game.guestCreator=game.guestUpdate;
+				game.creatorUpdate=game.guestUpdate;
 				game.guest="";
 				game.allPlayers=false;
 				game.guestUpdate=null;
@@ -72,8 +70,8 @@ inter.update=function (user,id){//0 error, 1 sin guest,2 game en marcha
 			game.guestUpdate=new Date();
 			return game;
 		}
-		else if (game.creator==user  && game.guestCreator!=null){
-			game.guestCreator=new Date();
+		else if (game.creator==user  && game.creatorUpdate!=null){
+			game.creatorUpdate=new Date();
 			if (game.allPlayers){
 				return game;
 			}
@@ -116,11 +114,11 @@ inter.play=function (player,creator){//creator = al campañero deseado
 			return setInvitado(game,player);
 		}
 	}
-	var game=new Partida();
+	var game=new Game();
 	count++;
 	game.id=count;
 	game.guest=creator;
-	game.guestCreator=new Date();
+	game.creatorUpdate=new Date();
 	game.creator=player;
 	games[game.id]=game;
 	return game;
