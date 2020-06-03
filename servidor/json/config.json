@@ -15,6 +15,6 @@
 	"host":"localhost"
 },
 "auth":{
-	"expiredTime":1
+	"expiredTime":10
 }
 }
